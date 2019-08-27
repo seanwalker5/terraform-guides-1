@@ -15,5 +15,15 @@ variable "instance_type" {
 
 variable "name" {
   description = "name to pass to Name tag"
-  default = "Provisioned by Terraform"
+  default = "SWalker"
+}
+
+variable "ttl" {
+  description = "Time To Live"
+  default = ""
+}
+
+variable "owner" {
+  description = "Owner of the instance"
+  default = "swalker@hashicorp.com"
 }
