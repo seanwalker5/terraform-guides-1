@@ -1,29 +1,22 @@
-variable "aws_region" {
-  description = "AWS region"
-  default = "us-west-1"
+terraform {
+  required_version = ">= 0.11.0"
 }
 
-variable "ami_id" {
-  description = "ID of the AMI to provision. Default is Ubuntu 14.04 Base Image"
-  default = "ami-2e1ef954"
+provider "aws" {
+  region = "${var.aws_region}"
 }
 
-variable "instance_type" {
-  description = "type of EC2 instance to provision."
-  default = "t2.micro"
-}
+resource "aws_instance" "ubuntu" {
+  ami           = "${var.ami_id}"
+  instance_type = "${var.instance_type}"
+  availability_zone = "${var.aws_region}a"
 
-variable "name" {
-  description = "name to pass to Name tag"
-  default = "SWalker"
-}
+  }
 
-variable "ttl" {
-  description = "Time To Live"
-  default = ""
-}
-
-variable "owner" {
-  description = "Owner of the instance"
-  default = "swalker@hashicorp.com"
-}
+tags {
+  Name  = "${var.name}"
+  TTL   = "${var.ttl}"
+  Owner = "$var.owner"
+  Description = "This is a demo instance"
+    
+  }
