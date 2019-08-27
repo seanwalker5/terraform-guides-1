@@ -20,7 +20,7 @@ variable "name" {
 
 variable "ttl" {
   description = "Time To Live"
-  default = ""
+  default = "48"
 }
 
 variable "owner" {
