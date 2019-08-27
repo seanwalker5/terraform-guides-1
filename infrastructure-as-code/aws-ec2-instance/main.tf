@@ -13,7 +13,7 @@ resource "aws_instance" "ubuntu" {
 
   }
 
-tags {
+tags = {
   Name  = "${var.name}"
   TTL   = "${var.ttl}"
   Owner = "${var.owner}"
